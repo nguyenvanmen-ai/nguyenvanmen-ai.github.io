@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Tra cứu tồn kho</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="app">
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sb-head">
+        <div class="sb-title"><span class="dot"></span> KHO DỮ LIỆU</div>
+        <div class="sb-sub"><span id="countText">0 file</span> - Lưu trong trình duyệt</div>
+      </div>
+
+      <div class="sb-files" id="fileList">
+        <div class="file-empty" id="fileEmpty">Chưa có file nào</div>
+      </div>
+
+      <div class="sb-upload">
+        <div class="dropzone" id="dropzone">
+          <div class="dz-icon">📁</div>
+          <div class="dz-title">Thêm file Excel</div>
+          <div class="dz-sub">kéo thả hoặc click</div>
+
+          <div class="row">
+            <input class="inp" type="date" id="dateInput" />
+            <input class="inp" type="file" id="fileInput" accept=".xlsx,.xls,.csv" />
+          </div>
+
+          <div class="dz-actions">
+            <button class="btn btn-accent" id="uploadBtn">Upload theo ngày</button>
+            <button class="btn btn-ghost" id="clearBtn">Xoá danh sách (trình duyệt)</button>
+          </div>
+
+          <div class="dz-sub" id="uploadHint" style="margin-top:6px; text-align:center;">
+            Tip: mỗi ngày 1 file (YYYY-MM-DD.xlsx)
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb"><span class="cube">📦</span> TRA CỨU TỒN KHO</div>
+      </header>
+
+      <section class="content">
+        <!-- Empty State -->
+        <div class="panel" id="emptyPanel">
+          <div class="empty">
+            <div class="hand">👉</div>
+            <div class="t1">Chọn file từ danh sách bên trái<br/>hoặc upload file mới để bắt đầu</div>
+          </div>
+        </div>
+
+        <!-- Work Area -->
+        <div class="work" id="workArea">
+          <div class="work-head">
+            <div class="left">
+              <div class="work-title" id="activeFileTitle">—</div>
+              <div class="work-sub" id="activeFileSub">—</div>
+            </div>
+            <div class="pill" id="activePill">Đã chọn</div>
+          </div>
+
+          <div class="searchbar">
+            <input id="q" placeholder="Nhập mã / tên hàng để tra cứu..." />
+            <button id="searchBtn">Tìm</button>
+            <div class="note">
+              (Demo UI) Muốn tra cứu thật theo file ngày chọn, mình sẽ nối API đọc file Excel trong Drive.
+            </div>
+          </div>
+
+          <div class="table">
+            <table>
+              <thead>
+                <tr>
+                  <th>SKU</th>
+                  <th>Tên hàng</th>
+                  <th>ĐVT</th>
+                  <th>Tồn cuối</th>
+                  <th>Kho</th>
+                  <th>Ghi chú</th>
+                </tr>
+              </thead>
+              <tbody id="tbody">
+                <tr>
+                  <td class="muted" colspan="6">Chưa có dữ liệu tra cứu. (Đang là khung giao diện)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
